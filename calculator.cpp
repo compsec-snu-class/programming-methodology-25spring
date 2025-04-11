@@ -18,7 +18,7 @@ int Calculator::sub(int a, int b) {
     if (a - b >= std::numeric_limits<int>::max()) {
         throw std::overflow_error("Overflow Error");
     }
-    else if (a -b <= std::numeric_limits<int>::min()){
+    else if (a - b <= std::numeric_limits<int>::min()){
         throw std::overflow_error("Underflow Error");
     }
     return a - b;
@@ -58,7 +58,7 @@ int Calculator::div(int a, int b) {
         throw std::invalid_argument("Division by zero");
     }
     else if (abs(a / b) <= std::numeric_limits<int>::min()){
-        throw std::overflow_error("Underflow Error");
+        throw std::overflow_error("Overflow Error");
     }
     return a / b;
 }
