@@ -22,7 +22,7 @@ int TodoList::string_length(const char* str) const {
     // TODO: return the number of characters before '\0'
     int len = 0;
     while (str[len] != '\0') {
-        ++len;
+        len = len + 1;
     }
     return len;
 }
@@ -32,7 +32,7 @@ void TodoList::string_copy(char* dest, const char* src) const {
     int i = 0;
     while (src[i] != '\0') {
         dest[i] = src[i];
-        ++i;
+       i = i + 1;
     }
     dest[i] = '\0';
 }
@@ -44,9 +44,9 @@ void TodoList::add_task(const char* task) {
     }
 
     int len = string_length(task);
-    tasks[size] = new char[len + 1];  // +1 for '\0'
+    tasks[size] = new char[len + 1]; 
     string_copy(tasks[size], task);
-    ++size;
+    size = size + 1;
 }
 
 void TodoList::remove_task(int index) {
@@ -57,12 +57,11 @@ void TodoList::remove_task(int index) {
 
     delete[] tasks[index];
 
-    // Shift remaining tasks
     for (int i = index; i < size - 1; ++i) {
         tasks[i] = tasks[i + 1];
     }
     tasks[size - 1] = nullptr;
-    --size;
+   size = size - 1;
 }
 
 const char** TodoList::get_pending_tasks(int& count) const {
